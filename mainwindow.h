@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtWidgets>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,5 +18,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    QHBoxLayout *blMainLayout;
+
+    QPushButton *btnCalculate;
+    QPushButton *btnChooseOperation;
+
+    QTextEdit *teFirstArg;
+    QTextEdit *teSecondArg;
+    QTextEdit *teResult;
 };
 #endif // MAINWINDOW_H

@@ -1,12 +1,14 @@
 #include "mainwindow.h"
 
 #include <QApplication>
+#include <QtWidgets>
 #include <QLocale>
 #include <QTranslator>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    MainWindow w;
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
@@ -17,7 +19,6 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    MainWindow w;
     w.show();
     return a.exec();
 }
