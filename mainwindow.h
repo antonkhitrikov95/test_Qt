@@ -19,13 +19,17 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    QHBoxLayout *blMainLayout;
+    QWidget *wgMain;
 
-    QPushButton *btnCalculate;
-    QPushButton *btnChooseOperation;
+    QBoxLayout *blMain;
+    QBoxLayout *blText;
+    QBoxLayout *blButtons;
 
     QTextEdit *teFirstArg;
     QTextEdit *teSecondArg;
     QTextEdit *teResult;
+
+    QPushButton *btnCalculate;
+    QPushButton *btnChooseOperation;
 };
 #endif // MAINWINDOW_H
