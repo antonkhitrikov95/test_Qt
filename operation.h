@@ -2,6 +2,7 @@
 #define OPERATION_H
 
 #include <QDialog>
+#include <QtWidgets>
 
 namespace Ui {
 class operation;
@@ -17,6 +18,18 @@ public:
 
 private:
     Ui::operation *ui;
+
+    QBoxLayout *blMain;
+    QBoxLayout *blCheckboxes;
+    QBoxLayout *blButtons;
+
+    QCheckBox *cbAddition;
+    QCheckBox *cbSubtraction;
+    QCheckBox *cbMultiplication;
+    QCheckBox *cbDivision;
+    QPushButton *btnOK;
+    QPushButton *btnCancel;
+
 };
 
 #endif // OPERATION_H
