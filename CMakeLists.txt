@@ -17,11 +17,11 @@ set(TS_FILES test_Qt_en_GB.ts)
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
-        dialog.cpp
-        dialog.h
+        operation.cpp
         mainwindow.h
+        operation.h
         mainwindow.ui
-        dialog.ui
+        operation.ui
         ${TS_FILES}
 )
 

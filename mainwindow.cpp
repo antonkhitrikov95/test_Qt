@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -37,11 +38,21 @@ MainWindow::MainWindow(QWidget *parent)
     wgMain->setLayout(blMain);
 
     wgMain->show();
+
     setCentralWidget(wgMain);
+
+    connect(btnChooseOperation, &QPushButton::released, this, &MainWindow::btnOperationClicked);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+void MainWindow::btnOperationClicked()
+{
+    operationWindow = new operation();
+    operationWindow->setModal(true);
+    operationWindow->exec();
 }
 
