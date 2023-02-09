@@ -37,9 +37,74 @@ operation::operation(QWidget *parent) :
     blMain->addLayout(blButtons);
 
     setLayout(blMain);
+
+    connect (cbAddition, &QCheckBox::stateChanged, this, &operation::check_cbAddition);
+    connect (cbSubtraction, &QCheckBox::stateChanged, this, &operation::check_cbSubtraction);
+    connect (cbMultiplication, &QCheckBox::stateChanged, this, &operation::check_cbMultiplication);
+    connect (cbDivision, &QCheckBox::stateChanged, this, &operation::check_cbDivision);
 }
 
 operation::~operation()
 {
     delete ui;
+}
+void operation::check_cbAddition()
+{
+    if (cbAddition->isChecked())
+    {
+        cbSubtraction->setEnabled(false);
+        cbMultiplication->setEnabled(false);
+        cbDivision->setEnabled(false);
+    }
+    else
+    {
+        cbSubtraction->setEnabled(true);
+        cbMultiplication->setEnabled(true);
+        cbDivision->setEnabled(true);
+    }
+}
+void operation::check_cbSubtraction()
+{
+    if (cbSubtraction->isChecked())
+    {
+        cbAddition->setEnabled(false);
+        cbMultiplication->setEnabled(false);
+        cbDivision->setEnabled(false);
+    }
+    else
+    {
+        cbAddition->setEnabled(true);
+        cbMultiplication->setEnabled(true);
+        cbDivision->setEnabled(true);
+    }
+}
+void operation::check_cbMultiplication()
+{
+    if (cbMultiplication->isChecked())
+    {
+        cbAddition->setEnabled(false);
+        cbSubtraction->setEnabled(false);
+        cbDivision->setEnabled(false);
+    }
+    else
+    {
+        cbAddition->setEnabled(true);
+        cbSubtraction->setEnabled(true);
+        cbDivision->setEnabled(true);
+    }
+}
+void operation::check_cbDivision()
+{
+    if (cbDivision->isChecked())
+    {
+        cbAddition->setEnabled(false);
+        cbSubtraction->setEnabled(false);
+        cbMultiplication->setEnabled(false);
+    }
+    else
+    {
+        cbAddition->setEnabled(true);
+        cbSubtraction->setEnabled(true);
+        cbMultiplication->setEnabled(true);
+    }
 }

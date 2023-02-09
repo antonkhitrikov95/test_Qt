@@ -16,6 +16,12 @@ public:
     explicit operation(QWidget *parent = nullptr);
     ~operation();
 
+ public slots:
+    void check_cbAddition();
+    void check_cbSubtraction();
+    void check_cbMultiplication();
+    void check_cbDivision();
+
 private:
     Ui::operation *ui;
 
