@@ -16,11 +16,18 @@ public:
     explicit operation(QWidget *parent = nullptr);
     ~operation();
 
+    QPushButton *btnOK;
+
  public slots:
     void check_cbAddition();
     void check_cbSubtraction();
     void check_cbMultiplication();
     void check_cbDivision();
+    void btnOKpush();
+    void btnCANCELpush();
+
+signals:
+    void btnOKsignal(int);
 
 private:
     Ui::operation *ui;
@@ -33,7 +40,7 @@ private:
     QCheckBox *cbSubtraction;
     QCheckBox *cbMultiplication;
     QCheckBox *cbDivision;
-    QPushButton *btnOK;
+
     QPushButton *btnCancel;
 
 };

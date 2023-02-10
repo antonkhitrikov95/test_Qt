@@ -42,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(wgMain);
 
     connect(btnChooseOperation, &QPushButton::released, this, &MainWindow::btnOperationClicked);
+    connect(btnCalculate, &QPushButton::released, this, &MainWindow::btnCalcutate_slot);
 
 }
 
@@ -53,6 +54,72 @@ void MainWindow::btnOperationClicked()
 {
     operationWindow = new operation();
     operationWindow->setModal(true);
+
+    connect(operationWindow, SIGNAL(btnOKsignal(int)), this, SLOT(operaionValue(int)));
+
     operationWindow->exec();
 }
+void MainWindow::operaionValue(int value)
+{
+    switch (value)
+    {
+        case 0:
+            btnChooseOperation->setText(QString("Operation"));
+            break;
+
+        case 1:
+            btnChooseOperation->setText(QString("Addition"));
+            break;
+
+        case 2:
+            btnChooseOperation->setText(QString("Subtraction"));
+            break;
+
+        case 3:
+            btnChooseOperation->setText(QString("Multiplication"));
+            break;
+
+        case 4:
+            btnChooseOperation->setText(QString("Division"));
+            break;
+    }
+
+}
+void MainWindow::btnCalcutate_slot()
+{
+    int firstArg;
+    int secondArg;
+    int result;
+
+    bool ok;
+
+    if (!teFirstArg->toPlainText().isEmpty() && !teSecondArg->toPlainText().isEmpty())
+    {
+        firstArg = teFirstArg->toPlainText().toInt(&ok,10);
+        secondArg = teSecondArg->toPlainText().toInt(&ok, 10);
+        if (btnChooseOperation->text() == "Addition")
+            teResult->setPlainText(QString(QString::number(firstArg + secondArg, 10)));
+        if (btnChooseOperation->text() == "Subtraction")
+            teResult->setPlainText(QString(QString::number(firstArg - secondArg, 10)));
+        if (btnChooseOperation->text() == "Multiplication")
+            teResult->setPlainText(QString(QString::number(firstArg * secondArg, 10)));
+        if (btnChooseOperation->text() == "Division")
+            teResult->setPlainText(QString(QString::number(firstArg / secondArg, 10)));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

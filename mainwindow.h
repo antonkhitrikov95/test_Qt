@@ -19,6 +19,8 @@ public:
 
 private slots:
     void btnOperationClicked();
+    void operaionValue(int);
+    void btnCalcutate_slot();
 
 private:
     Ui::MainWindow *ui;

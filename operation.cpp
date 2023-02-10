@@ -42,6 +42,9 @@ operation::operation(QWidget *parent) :
     connect (cbSubtraction, &QCheckBox::stateChanged, this, &operation::check_cbSubtraction);
     connect (cbMultiplication, &QCheckBox::stateChanged, this, &operation::check_cbMultiplication);
     connect (cbDivision, &QCheckBox::stateChanged, this, &operation::check_cbDivision);
+
+    connect (btnOK, &QPushButton::released, this, &operation::btnOKpush);
+    connect (btnCancel, &QPushButton::released, this, &operation::btnCANCELpush);
 }
 
 operation::~operation()
@@ -108,3 +111,22 @@ void operation::check_cbDivision()
         cbMultiplication->setEnabled(true);
     }
 }
+void operation::btnOKpush()
+{
+    if (cbAddition->isChecked())
+        emit btnOKsignal(1);
+    if (cbSubtraction->isChecked())
+        emit btnOKsignal(2);
+    if (cbMultiplication->isChecked())
+        emit btnOKsignal(3);
+    if (cbDivision->isChecked())
+        emit btnOKsignal(4);
+    if (!cbAddition->isChecked() && !cbSubtraction->isChecked() && !cbMultiplication->isChecked() && !cbDivision->isChecked())
+        emit btnOKsignal(0);
+    this->close();
+}
+void operation::btnCANCELpush()
+{
+    this->close();
+}
+
